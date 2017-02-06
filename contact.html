@@ -1,55 +1,3 @@
-<?php
-$hasError = false;
-$sent = fasle;
-if(isset($_POST['submitform'])) {
-    $name = trim(htmlspecialchars($_POST['name'],ENT_QUOTES));
-    $email = trim($_POST['email']);
-    $message = trim(htmlspecialchars($_POST['message'],ENT_QUOTES));
-    
-    $fieldArray = array(
-      'name' => $name;
-        'email' => $email,
-        'message' => $message
-        
-    );
-    
-    $errprArray = array();
-    
-    foreach($fieldsArray as $key => $val) {
-        switch ($key) {
-            case 'name':
-            case 'message':
-                if(empty($val)) {
-                    $hasError = true;
-                    $errorArray[$key] = "Invalid Email Address entered";
-                    
-                }
-                else {
-                    $email = filter_var($email,FILTER_SANITIZE_EMAIL);
-                }
-                break;
-        }
-    }
-    
-    if($hasError !== true) {
-        $to = "0830pradeep@gmail.com";
-        $subject = "message from contact form";
-        $msgcontents = "Nmae: $name<br>Email: $email<br>Message: $message"
-            $headers = "MIME-Version: 1.0 \r\n";
-         $headers .= "Content-type: text/html; charset=iso-8859-1 \r\n";
-        $headers .= "From: $name <$email> \r\n"
-            $mailsent = mail($to, $subject, $msgcontents, $headers);
-        if($mailsent) {
-            $sent = true;
-            unset($name);
-            unset($email);
-        unset($message);
-        }
-        
-        
-    }
-}
-?>
 <!DOCTYPE html>
 <html class="ie ie7 fixed_menu gr__Pradeep_com" lang="en"><head>
     <meta charset="utf-8">
@@ -87,52 +35,9 @@ if(isset($_POST['submitform'])) {
     </script>
     <![endif]-->
 	<script src="js/code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="js/code.jquery.com/jquery.validate.min.js"></script>
-    
-    <script>
-    jQuery(document).ready(function($){
-        $("#contactform").validate({
-            rules: {
-                name: {
-                    required:true, 
-                    minlength:2
-                },
-                email: {
-                    required:true,
-                    minlength:true
-                },
-                message: {
-                    required:true,
-                    minlength:50
-                }
-                
-            },
-            messages: {
-            name:   {
-                required: "Please enter your name",
-                minlength: "Your name seems a short doesn't it? "
-            },
-                email:{
-                    required: "Please enter your email adress",
-                    minlength: "Please enter valid email adress"
-                    
-                },
-                message: {
-                    required: "Please enter your message",
-                    minlength: "please enter atleast 50 characters"
-                }
-            }
-        });
-    });
-    
-    </script>
-    
-    
 </head>
 
-    
-    
-    <body data-gr-c-s-loaded="true">
+<div class="gr-top-z-index gr-top-zero" tabindex="-1"><div class="_970ef1-hoverMenu _970ef1-referral" style="transform: translate(1085.5px, 467px);" data-grammarly-reactid=".2"><div class="_970ef1-panel" data-grammarly-reactid=".2.0"><div class="_970ef1-tooltip _970ef1-tooltip_hidden undefined" data-grammarly-reactid=".2.0.0"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".2.0.1"><div class="_970ef1-btn _970ef1-btn_disable" tabindex="-1" data-grammarly-reactid=".2.0.1.0"></div></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".2.0.2"><div class="_970ef1-referralArea" tabindex="-1" data-grammarly-reactid=".2.0.2.0"><div class="_970ef1-btn _970ef1-btn_referral" data-grammarly-reactid=".2.0.2.0.0"></div><span class="_970ef1-referralText" data-grammarly-reactid=".2.0.2.0.1">Invite Friends</span></div></div><div class="_970ef1-line" data-grammarly-reactid=".2.0.3"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".2.0.5"><div class="_970ef1-btn _970ef1-btn_grammarly" data-action="editor" tabindex="-1" data-grammarly-reactid=".2.0.5.0"></div></div></div></div></div><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"><div class="_970ef1-hoverMenu _970ef1-referral" style="transform: translate(1251.5px, 482px);" data-grammarly-reactid=".1"><div class="_970ef1-panel" data-grammarly-reactid=".1.0"><div class="_970ef1-tooltip _970ef1-tooltip_hidden undefined" data-grammarly-reactid=".1.0.0"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".1.0.1"><div class="_970ef1-btn _970ef1-btn_disable" tabindex="-1" data-grammarly-reactid=".1.0.1.0"></div></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".1.0.2"><div class="_970ef1-referralArea" tabindex="-1" data-grammarly-reactid=".1.0.2.0"><div class="_970ef1-btn _970ef1-btn_referral" data-grammarly-reactid=".1.0.2.0.0"></div><span class="_970ef1-referralText" data-grammarly-reactid=".1.0.2.0.1">Invite Friends</span></div></div><div class="_970ef1-line" data-grammarly-reactid=".1.0.3"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".1.0.5"><div class="_970ef1-btn _970ef1-btn_grammarly" data-action="editor" tabindex="-1" data-grammarly-reactid=".1.0.5.0"></div></div></div></div></div><body data-gr-c-s-loaded="true">
 	<header class="">
         <div class="header_wrapper container">
         	<a href="index.html" class="logo"><img src="img/logo2.png" alt="" class="logo_def" width="125" height="39"><img src="img/retina/logo2.png" alt="" class="logo_retina" width="125" height="39"></a>
@@ -184,7 +89,6 @@ if(isset($_POST['submitform'])) {
         <div class="content_wrapper">
         	<div class="page_title_block">
             	<div class="container">
-                   
                     <h1 class="title"> Contact Me </h1>
                     <div class="breadcrumbs"><a href="index.html">Home</a><span>Contact Me</span></div>
                 </div>
@@ -226,10 +130,7 @@ if(isset($_POST['submitform'])) {
                                         </div>
                                         
                                         <div class="span8 module_cont module_feedback_form module_small_padding1">
-                                           
-                                            
-                                            
-                                       <!--     <form name="feedback_form" action="sendmail.php" method="post" class="feedback_form">
+                                            <form name="feedback_form" action="sendmail.php" method="post" class="feedback_form">
                                                 <input type="text" name="name" value="Name" title="Name" class="field-name form_field" style="width: 270px;">
                                                 <div class="clear"></div>
                                                 <input type="text" name="email" value="Email" title="Email" class="field-email form_field" style="width: 270px;">
@@ -241,40 +142,7 @@ if(isset($_POST['submitform'])) {
                                                 <input type="reset" name="reset" id="reset2" value="Clear form" class="feedback_reset">
                                                 <input type="submit" name="submit" value="Submit" class="feedback_go" id="">
                                                 <div class="ajaxanswer"></div>
-                                          
-                                             </form> -->
-                                            
-                                            
-                                            <div class="container_contact">
-                                               
-                                                <form id="contactform" method = "post" action="<?php echo $_SERVER['PHP_SELF']; ?>" novalidate>
-                                                <?php
-                                                    if($sent === true){
-                                                        echo "<h2 class= 'success'>Thanks, Your message has been sent successfully</h2>";
-                                                    }
-                                                    elseif($hasError === true){
-                                                        echo "<ul class= 'errorlist'>";
-                                                        foreach($errorARRAY as $key == $val){
-                                                            echo "<li>" . ucfirst ($key) "fielderror - $val</li>";
-                                                            
-                                                        }
-                                                        echo "</ul";
-                                                    }
-                                                ?>
-                                                <input type="text" name="name" value="<? php echo (isset ($name) ? $name:""); ?>" placeholder="your name ">
-                                                    <input type="email" name="email" value="<? php echo (isset ($email) ? $email:""); ?>" placeholder="your email">
-                                                    <textarea  name="message" value="<? php echo (isset ($message) ? $message:""); ?>" placeholder="your message "></textarea>
-                                                    <input type="submit" name="submitform" value="SendS">
-                                                </form>
-                                            
-                                            </div>
-                                            
-                               
-                                        
-                                        
-                                        
-                                        
-                                        
+                                            </form>
                                         </div><!-- .module_cont -->
                                         
                                     </div><!-- .row-fluid -->
