@@ -1,0 +1,336 @@
+<?php
+$hasError = false;
+$sent = fasle;
+if(isset($_POST['submitform'])) {
+    $name = trim(htmlspecialchars($_POST['name'],ENT_QUOTES));
+    $email = trim($_POST['email']);
+    $message = trim(htmlspecialchars($_POST['message'],ENT_QUOTES));
+    
+    $fieldArray = array(
+      'name' => $name;
+        'email' => $email,
+        'message' => $message
+        
+    );
+    
+    $errprArray = array();
+    
+    foreach($fieldsArray as $key => $val) {
+        switch ($key) {
+            case 'name':
+            case 'message':
+                if(empty($val)) {
+                    $hasError = true;
+                    $errorArray[$key] = "Invalid Email Address entered";
+                    
+                }
+                else {
+                    $email = filter_var($email,FILTER_SANITIZE_EMAIL);
+                }
+                break;
+        }
+    }
+    
+    if($hasError !== true) {
+        $to = "0830pradeep@gmail.com";
+        $subject = "message from contact form";
+        $msgcontents = "Nmae: $name<br>Email: $email<br>Message: $message"
+            $headers = "MIME-Version: 1.0 \r\n";
+         $headers .= "Content-type: text/html; charset=iso-8859-1 \r\n";
+        $headers .= "From: $name <$email> \r\n"
+            $mailsent = mail($to, $subject, $msgcontents, $headers);
+        if($mailsent) {
+            $sent = true;
+            unset($name);
+            unset($email);
+        unset($message);
+        }
+        
+        
+    }
+}
+?>
+<!DOCTYPE html>
+<html class="ie ie7 fixed_menu gr__Pradeep_com" lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Mobile Specific Metas
+    +++++++++++++++++++++++++++ -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="shortcut icon" href="img/fav.png">
+
+    <link rel="apple-touch-icon" href="img/apple_icons_57x57.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="img/apple_icons_72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="img/apple_icons_114x114.png">
+
+    <title>Pradeep | Contact Page</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800,400italic,600italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-responsive.css">    
+    <link rel="stylesheet" type="text/css" href="css/plugins.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/responsive.css">
+    <link rel="stylesheet" type="text/css" href="css/theme_settings.css">
+    <link rel="stylesheet" type="text/css" href="css/skin.css">
+	<link rel="stylesheet" type="text/css" href="css/color_theme.css" id="theme_color">
+        
+    <!--[if IE 8 ]>
+    <link rel="stylesheet" type="text/css" href="css/ie_css.css">
+    <script>
+        var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+        for (var i = 0; i < e.length; i++) {
+            document.createElement(e[i]);
+        }		
+    </script>
+    <![endif]-->
+	<script src="js/code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="js/code.jquery.com/jquery.validate.min.js"></script>
+    
+    <script>
+    jQuery(document).ready(function($){
+        $("#contactform").validate({
+            rules: {
+                name: {
+                    required:true, 
+                    minlength:2
+                },
+                email: {
+                    required:true,
+                    minlength:true
+                },
+                message: {
+                    required:true,
+                    minlength:50
+                }
+                
+            },
+            messages: {
+            name:   {
+                required: "Please enter your name",
+                minlength: "Your name seems a short doesn't it? "
+            },
+                email:{
+                    required: "Please enter your email adress",
+                    minlength: "Please enter valid email adress"
+                    
+                },
+                message: {
+                    required: "Please enter your message",
+                    minlength: "please enter atleast 50 characters"
+                }
+            }
+        });
+    });
+    
+    </script>
+    
+    
+</head>
+
+    
+    
+    <body data-gr-c-s-loaded="true">
+	<header class="">
+        <div class="header_wrapper container">
+        	<a href="index.html" class="logo"><img src="img/logo2.png" alt="" class="logo_def" width="125" height="39"><img src="img/retina/logo2.png" alt="" class="logo_retina" width="125" height="39"></a>
+            <nav>
+                <ul class="menu">
+                    <li><a href="index.html">HOME</a>
+
+                    </li>
+                    <li><a href="about.html">ABOUT ME</a>
+
+                    </li>
+
+
+                    <li><a href="portfolio3.html">GALLERY</a>
+
+                    </li>
+                    <li><a href="projects.html">PROJECTS</a>
+
+                    </li>
+                    <li class="current-menu-parent"><a href="contact.html">CONTACT ME</a>
+
+                    </li>
+                </ul><!-- .menu -->
+                <div class="clear"></div>
+            </nav>
+        <a href="javascript:void(0)" class="menu_toggler"></a></div>
+    <div class="mobile_menu_wrapper" style="display: none;"><ul class="mobile_menu container">
+                    <li><a href="index.html">HOME</a>
+
+                    </li>
+                    <li><a href="about.html">ABOUT ME</a>
+
+                    </li>
+
+
+                    <li><a href="portfolio3.html">GALLERY</a>
+
+                    </li>
+                    <li><a href="projects.html">PROJECTS</a>
+
+                    </li>
+                    <li class="current-menu-parent"><a href="contact.html">CONTACT ME</a>
+
+                    </li>
+                </ul></div></header>
+    
+    <div class="main_wrapper">
+        <!-- C O N T E N T -->
+        <div class="content_wrapper">
+        	<div class="page_title_block">
+            	<div class="container">
+                   
+                    <h1 class="title"> Contact Me </h1>
+                    <div class="breadcrumbs"><a href="index.html">Home</a><span>Contact Me</span></div>
+                </div>
+            </div>
+            <div class="container">	            
+                <div class="content_block no-sidebar row">
+                    <div class="fl-container span12">
+                        <div class="row">
+                            <div class="posts-block span12">
+                                <div class="contentarea">
+
+                                    <div class="row-fluid">
+                                        <div class="span12 module_cont module_promo_text">
+
+                                            <div class="shortcode_promoblock ">
+                                                <div class="promo_text_block span12">
+
+                                                    <h4>Thank you for visiting! Please drop me a note.. I would love to hear from you .</h4>
+
+                                                </div>
+                                            </div>
+                                        </div><!--.module_cont -->
+                                        <div class="clear"><!-- ClearFIX --></div>
+                                    </div><!-- .row-fluid -->
+
+                                    <div class="row-fluid">
+                                        <div class="span4 module_cont module_contact_info module_small_padding1">
+                                            <h4>For further details contact:</h4>
+                                        	
+                                            <p>E-Mail: 0830pradeep@gmail.com</p>
+
+                                            <div class="module_contact_icons module_small_padding">
+                                                <a target="_blank" href="https://www.facebook.com/ActressKeerthySuresh/" class="ico_socialize_facebook1 ico_socialize type1"></a>
+                                                <a target="_blank" href="https://twitter.com/keerthy_suresh_" class="ico_socialize_twitter2 ico_socialize type1"></a>
+                                                <a href="https://in.pinterest.com/Keerthy4U/" class="ico_socialize_pinterest ico_socialize type1"></a>
+
+                                               <!-- <a href="#" class="ico_socialize_google2 ico_socialize type1"></a>-->
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="span8 module_cont module_feedback_form module_small_padding1">
+                                           
+                                            
+                                            
+                                       <!--     <form name="feedback_form" action="sendmail.php" method="post" class="feedback_form">
+                                                <input type="text" name="name" value="Name" title="Name" class="field-name form_field" style="width: 270px;">
+                                                <div class="clear"></div>
+                                                <input type="text" name="email" value="Email" title="Email" class="field-email form_field" style="width: 270px;">
+                                                <div class="clear"></div>
+                                                <input type="text" name="phone" value="Phone" title="Phone" class="field-subject form_field" style="width: 270px;">
+                                                <div class="clear"></div>
+                                                <textarea name="comments" cols="45" rows="5" title="Message" class="field-message form_field" style="width: 270px;">Message</textarea><grammarly-btn><div style="z-index: 2; opacity: 1; transform: translate(1225.5px, 471px);" class="_e725ae-textarea_btn _e725ae-not_focused" data-grammarly-reactid=".0"><div class="_e725ae-transform_wrap" data-grammarly-reactid=".0.0"><div title="Protected by Grammarly" class="_e725ae-status" data-grammarly-reactid=".0.0.0">&nbsp;</div></div></div></grammarly-btn>
+                                                <div class="clear"></div>
+                                                <input type="reset" name="reset" id="reset2" value="Clear form" class="feedback_reset">
+                                                <input type="submit" name="submit" value="Submit" class="feedback_go" id="">
+                                                <div class="ajaxanswer"></div>
+                                          
+                                             </form> -->
+                                            
+                                            
+                                            <div class="container_contact">
+                                               
+                                                <form id="contactform" method = "post" action="<?php echo $_SERVER['PHP_SELF']; ?>" novalidate>
+                                                <?php
+                                                    if($sent === true){
+                                                        echo "<h2 class= 'success'>Thanks, Your message has been sent successfully</h2>";
+                                                    }
+                                                    elseif($hasError === true){
+                                                        echo "<ul class= 'errorlist'>";
+                                                        foreach($errorARRAY as $key == $val){
+                                                            echo "<li>" . ucfirst ($key) "fielderror - $val</li>";
+                                                            
+                                                        }
+                                                        echo "</ul";
+                                                    }
+                                                ?>
+                                                <input type="text" name="name" value="<? php echo (isset ($name) ? $name:""); ?>" placeholder="your name ">
+                                                    <input type="email" name="email" value="<? php echo (isset ($email) ? $email:""); ?>" placeholder="your email">
+                                                    <textarea  name="message" value="<? php echo (isset ($message) ? $message:""); ?>" placeholder="your message "></textarea>
+                                                    <input type="submit" name="submitform" value="SendS">
+                                                </form>
+                                            
+                                            </div>
+                                            
+                               
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        </div><!-- .module_cont -->
+                                        
+                                    </div><!-- .row-fluid -->
+                                    
+                                    <!--<div class="row-fluid">
+                                        <div class="span12 module_cont module_google_map">
+                                            <iframe width="870" height="350" src="http://maps.google.ca/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=New+York&amp;sll=49.891235,-97.15369&amp;sspn=47.259509,86.923828&amp;ie=UTF8&amp;hq=&amp;hnear=New+York,+United+States&amp;ll=40.714867,-74.005537&amp;spn=0.019517,0.018797&amp;z=14&amp;iwloc=near&amp;output=embed"></iframe>
+                                        </div>&lt;!&ndash; .module_cont &ndash;&gt;
+                                    </div>--><!-- .row-fluid -->
+                                   
+                                </div><!-- .contentarea -->
+                            </div>
+                            <div class="left-sidebar-block span3">
+                                //Sidebar Text
+                            </div><!-- .left-sidebar -->
+                        </div>
+                        <div class="clear"><!-- ClearFix --></div>
+                    </div><!-- .fl-container -->
+                    <div class="right-sidebar-block span3">
+                        <aside class="sidebar">
+							
+                        </aside>
+                    </div><!-- .right-sidebar -->
+                    <div class="clear"><!-- ClearFix --></div>
+                </div>
+            </div><!-- .container -->
+        </div><!-- .content_wrapper -->
+	
+    </div><!-- .main_wrapper -->
+
+    <!-- .pre_footer -->
+
+    <footer>
+        <div class="footer_line container">
+            <div class="socials">
+                <ul class="socials_list">
+                    <li><a target="_blank" href="https://www.facebook.com/ActressKeerthySuresh/" class="ico_social-facebook"></a></li>
+                    <li><a target="_blank" href="https://twitter.com/keerthy_suresh_" class="ico_social-twitter"></a></li>
+                    <li><a target="_blank" href="http://keerthysuresh.tumblr.com/" class="ico_social-tumblr"></a></li>
+                    <li><a target="_blank" href="https://in.pinterest.com/Keerthy4U/" class="ico_social-pinterest"></a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/watch?v=HoCni5j6p8s" class="ico_social-youtube"></a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/keerthysureshofficial/" class="ico_social-instagram"></a></li>
+
+
+                </ul>
+            </div>
+           <div class="copyright">©2017 Pradeep. All Rights Reserved.<br> Web Design By Pradeep0830</div>
+
+
+            <div class="clear"></div>
+        </div>
+    </footer>
+    
+    <script src="js/code.jquery.com/ui/1.10.2/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/theme.js"></script>	
+
+
+<!-- Mirrored from www.gt3themes.com/website-templates/frame/dark/contact.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 17 Feb 2016 05:42:58 GMT -->
+</body><span class="gr__tooltip"><span class="gr__tooltip-content"></span><i class="gr__tooltip-logo"></i><span class="gr__triangle"></span></span><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"></div><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"></div></html>
