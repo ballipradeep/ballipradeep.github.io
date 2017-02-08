@@ -25,11 +25,44 @@
     <link rel="stylesheet" type="text/css" href="css/skin.css">
 	<link rel="stylesheet" type="text/css" href="css/color_theme.css" id="theme_color">
         
-   
+    <!--[if IE 8 ]>
+    <link rel="stylesheet" type="text/css" href="css/ie_css.css">
+    <script>
+        var e = ("article,aside,figcaption,figure,footer,header,hgroup,nav,section,time").split(',');
+        for (var i = 0; i < e.length; i++) {
+            document.createElement(e[i]);
+        }		
+    </script>
+    <![endif]-->
 	<script src="js/code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script>
+        $('#contact-form').submit(function(e) {
+    var name    = document.getElementById('inputName')
+    var email   = document.getElementById('inputEmail')
+    var message = document.getElementById('inputMessage')
+
+    if (!name.value || !email.value || !message.value) {
+      alertify.error("Please check your entries");
+      return false;
+    } else {
+      $.ajax({
+        method: 'POST',
+        url: '//formspree.io/0830pradeep@gmail.com',
+        data: $('#contact-form').serialize(),
+        datatype: 'json'
+      });
+      e.preventDefault();
+      $(this).get(0).reset();
+      alertify.success("Message sent");
+    }
+  });
+    
+    
+    </script>
+    
 </head>
-<body oncontextmenu="return false">
-<div class="gr-top-z-index gr-top-zero" tabindex="-1"><div class="_970ef1-hoverMenu _970ef1-referral" style="transform: translate(1085.5px, 467px);" data-grammarly-reactid=".2"><div class="_970ef1-panel" data-grammarly-reactid=".2.0"><div class="_970ef1-tooltip _970ef1-tooltip_hidden undefined" data-grammarly-reactid=".2.0.0"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".2.0.1"><div class="_970ef1-btn _970ef1-btn_disable" tabindex="-1" data-grammarly-reactid=".2.0.1.0"></div></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".2.0.2"><div class="_970ef1-referralArea" tabindex="-1" data-grammarly-reactid=".2.0.2.0"><div class="_970ef1-btn _970ef1-btn_referral" data-grammarly-reactid=".2.0.2.0.0"></div><span class="_970ef1-referralText" data-grammarly-reactid=".2.0.2.0.1">Invite Friends</span></div></div><div class="_970ef1-line" data-grammarly-reactid=".2.0.3"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".2.0.5"><div class="_970ef1-btn _970ef1-btn_grammarly" data-action="editor" tabindex="-1" data-grammarly-reactid=".2.0.5.0"></div></div></div></div></div><div style="visibility: hidden; top: -9999px; position: absolute; opacity: 0;"><div class="_970ef1-hoverMenu _970ef1-referral" style="transform: translate(1251.5px, 482px);" data-grammarly-reactid=".1"><div class="_970ef1-panel" data-grammarly-reactid=".1.0"><div class="_970ef1-tooltip _970ef1-tooltip_hidden undefined" data-grammarly-reactid=".1.0.0"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".1.0.1"><div class="_970ef1-btn _970ef1-btn_disable" tabindex="-1" data-grammarly-reactid=".1.0.1.0"></div></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".1.0.2"><div class="_970ef1-referralArea" tabindex="-1" data-grammarly-reactid=".1.0.2.0"><div class="_970ef1-btn _970ef1-btn_referral" data-grammarly-reactid=".1.0.2.0.0"></div><span class="_970ef1-referralText" data-grammarly-reactid=".1.0.2.0.1">Invite Friends</span></div></div><div class="_970ef1-line" data-grammarly-reactid=".1.0.3"></div><div class="_970ef1-buttonArea" data-grammarly-reactid=".1.0.5"><div class="_970ef1-btn _970ef1-btn_grammarly" data-action="editor" tabindex="-1" data-grammarly-reactid=".1.0.5.0"></div></div></div></div></div><body data-gr-c-s-loaded="true">
+
+
 	<header class="">
         <div class="header_wrapper container">
         	<a href="index.html" class="logo"><img src="img/logo2.png" alt="" class="logo_def" width="125" height="39"><img src="img/retina/logo2.png" alt="" class="logo_retina" width="125" height="39"></a>
@@ -56,7 +89,25 @@
                 <div class="clear"></div>
             </nav>
         <a href="javascript:void(0)" class="menu_toggler"></a></div>
-    </header>
+    <div class="mobile_menu_wrapper" style="display: none;"><ul class="mobile_menu container">
+                    <li><a href="index.html">HOME</a>
+
+                    </li>
+                    <li><a href="about.html">ABOUT ME</a>
+
+                    </li>
+
+
+                    <li><a href="portfolio3.html">GALLERY</a>
+
+                    </li>
+                    <li><a href="projects.html">PROJECTS</a>
+
+                    </li>
+                    <li class="current-menu-parent"><a href="contact.html">CONTACT ME</a>
+
+                    </li>
+                </ul></div></header>
     
     <div class="main_wrapper">
         <!-- C O N T E N T -->
@@ -95,26 +146,35 @@
                                             <p>E-Mail: 0830pradeep@gmail.com</p>
 
                                             <div class="module_contact_icons module_small_padding">
-                                                <a target="_blank" href="https://www.facebook.com/pradeep0830" class="ico_socialize_facebook1 ico_socialize type1"></a>
-                                                <a target="_blank" href="https://twitter.com/pradeep0830" class="ico_socialize_twitter2 ico_socialize type1"></a>
-                                                <a target="_blank" href="https://www.youtube.com/channel/UCoj5xH0cI_dkCB7Fy3fKy7w" class="ico_social-youtube"></a>
+                                                <a target="_blank" href="https://www.facebook.com/ActressKeerthySuresh/" class="ico_socialize_facebook1 ico_socialize type1"></a>
+                                                <a target="_blank" href="https://twitter.com/keerthy_suresh_" class="ico_socialize_twitter2 ico_socialize type1"></a>
+                                                <a href="https://in.pinterest.com/Keerthy4U/" class="ico_socialize_pinterest ico_socialize type1"></a>
 
                                                <!-- <a href="#" class="ico_socialize_google2 ico_socialize type1"></a>-->
                                             </div>
                                         </div>
                                         
                                         <div class="span8 module_cont module_feedback_form module_small_padding1">
-                                            <form name="feedback_form" action="sendmail.php" method="post" class="feedback_form">
-                                                <input type="text" name="name" value="Name" title="Name" class="field-name form_field" style="width: 270px;">
+                                            <form id="contact_form" class="feedback_form">
+                                                <input type="text" name="name" value="Name" id="inputName" title="Name" class="field-name form_field" style="width: 270px;">
                                                 <div class="clear"></div>
-                                                <input type="text" name="email" value="Email" title="Email" class="field-email form_field" style="width: 270px;">
+                                                <input type="text" name="email" id="inputEmail" value="Email" title="Email" class="field-email form_field" style="width: 270px;">
                                                 <div class="clear"></div>
                                                 <input type="text" name="phone" value="Phone" title="Phone" class="field-subject form_field" style="width: 270px;">
                                                 <div class="clear"></div>
-                                                <textarea name="comments" cols="45" rows="5" title="Message" class="field-message form_field" style="width: 270px;">Message</textarea><grammarly-btn><div style="z-index: 2; opacity: 1; transform: translate(1225.5px, 471px);" class="_e725ae-textarea_btn _e725ae-not_focused" data-grammarly-reactid=".0"><div class="_e725ae-transform_wrap" data-grammarly-reactid=".0.0"><div title="Protected by Grammarly" class="_e725ae-status" data-grammarly-reactid=".0.0.0">&nbsp;</div></div></div></grammarly-btn>
-                                                <div class="clear"></div>
-                                                <input type="reset" name="reset" id="reset2" value="Clear form" class="feedback_reset">
-                                                <input type="submit" name="submit" value="Submit" class="feedback_go" id="">
+                                                <textarea name="message" id="inputMessage" cols="45" rows="5" title="Message" class="field-message form_field" style="width: 270px;">Message</textarea>
+                                            <grammarly-btn>
+                                                <div style="z-index: 2; opacity: 1; transform: translate(1225.5px, 471px);" class="_e725ae-textarea_btn _e725ae-not_focused" data-grammarly-reactid=".0">
+                                                    <div class="_e725ae-transform_wrap" data-grammarly-reactid=".0.0">
+                                                        <div title="Protected by Grammarly" class="_e725ae-status" data-grammarly-reactid=".0.0.0">&nbsp;</div>
+                                                    </div>
+                                                </div>
+                                            </grammarly-btn>
+                                                
+                                                
+                                             
+                                               
+                                                <input class="btn btn-default" type="submit" id="email-submit-btn" value="Send">
                                                 <div class="ajaxanswer"></div>
                                             </form>
                                         </div><!-- .module_cont -->
@@ -153,11 +213,12 @@
         <div class="footer_line container">
             <div class="socials">
                 <ul class="socials_list">
-                    <li><a target="_blank" href="https://www.facebook.com/pradeep0830" class="ico_social-facebook"></a></li>
-                    <li><a target="_blank" href="https://twitter.com/pradeep0830" class="ico_social-twitter"></a></li>
-                  
-                    <li><a target="_blank" href="https://www.youtube.com/channel/UCoj5xH0cI_dkCB7Fy3fKy7w" class="ico_social-youtube"></a></li>
-                   
+                    <li><a target="_blank" href="https://www.facebook.com/ActressKeerthySuresh/" class="ico_social-facebook"></a></li>
+                    <li><a target="_blank" href="https://twitter.com/keerthy_suresh_" class="ico_social-twitter"></a></li>
+                    <li><a target="_blank" href="http://keerthysuresh.tumblr.com/" class="ico_social-tumblr"></a></li>
+                    <li><a target="_blank" href="https://in.pinterest.com/Keerthy4U/" class="ico_social-pinterest"></a></li>
+                    <li><a target="_blank" href="https://www.youtube.com/watch?v=HoCni5j6p8s" class="ico_social-youtube"></a></li>
+                    <li><a target="_blank" href="https://www.instagram.com/keerthysureshofficial/" class="ico_social-instagram"></a></li>
 
 
                 </ul>
